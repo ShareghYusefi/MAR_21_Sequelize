@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.1",
-    "mysql2": "^3.9.2"
+    "mariadb": "^3.3.0",
+    "mysql2": "^3.9.2",
+    "sequelize": "^6.37.1"
   }
 }
