@@ -2,8 +2,8 @@
 const express = require("express");
 // import created sequelize instance
 const sequelize = require("./config");
-// import student model
-const Student = require("./models/student");
+// import student routes
+const studentRoutes = require("./routes/student");
 
 // test the connection to the database
 sequelize
@@ -14,19 +14,17 @@ sequelize
 // create an instance of express server
 const app = express();
 
-// welcome page
-app.get("/students", function (req, res) {
-  //   get students from the database
-  Student.findAll()
-    .then((students) => {
-      res.send(students);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
+// json data middleware
+app.use(express.json());
+// form data middleware
+app.use(express.urlencoded({ extended: true }));
 
-// listen for requests on port 3000
-app.listen(3000, function () {
+// use student routes
+app.use(studentRoutes);
+
+// process is a object that represents the current nodejs process
+// process.env is an object that contains current environment variables
+// process.env.PORT is an environment variable that is set by the hosting service
+app.listen(process.env.PORT || 3000, function () {
   console.log("Server is running on port 3000");
 });
