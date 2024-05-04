@@ -26,6 +26,9 @@ const Student = sequelize.define(
     age: {
       type: Sequelize.INTEGER,
     },
+    level: {
+      type: Sequelize.STRING,
+    },
   },
   { timestamps: false }
 );

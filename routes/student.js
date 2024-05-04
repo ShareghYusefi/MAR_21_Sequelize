@@ -38,6 +38,7 @@ router.post("/students", function (req, res) {
     name: req.body.name,
     grade: req.body.grade,
     age: req.body.age,
+    level: req.body.level,
   };
   // create a new student record in the database
   Student.create(newStudent)
@@ -60,8 +61,9 @@ router.patch("/students/:id", function (req, res) {
         student.name = req.body.name;
         student.grade = req.body.grade;
         student.age = req.body.age;
-        // save the updated student record to the database
-        student.save();
+        level: req.body.level,
+          // save the updated student record to the database
+          student.save();
         res.send(student);
       } else {
         res.send("Student not found", 404);
